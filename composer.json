@@ -1,0 +1,19 @@
+{
+  "name": "stdin/mvc",
+  "authors": [
+    {
+      "name": "Dinushan Vimukthi"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "app\\": "."
+    }
+  },
+
+  "require": {
+    "vlucas/phpdotenv": "^5.4",
+    "ext-pdo": "*",
+    "ext-json": "*"
+  }
+}
