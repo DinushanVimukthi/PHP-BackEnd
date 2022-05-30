@@ -17,35 +17,41 @@ class APIController extends Controller
     {
         $Path=$request->getPath();
 
-        if($Path[0]=='/api' || $Path[0]=='/API')
+        if(strtolower ($Path[0])=='/api')
         {
 
             $Path=array_slice($Path,1);
-            if($Path[0]=='/POST' || $Path[0]=='/post' ||$Path[0]=='/GET' || $Path[0]=='/get' )
+            if(strtolower ($Path[0])=='/auth')
             {
             $Path=array_slice($Path,1);
+            $this->Auth ($request,$Path);
             }
             else{
-                throw new Exception('API Method (GET/POST) not found');
+                throw new Exception('API Method (GET/Auth) not found');
             }
         }
 
 //        echo '<pre>';
 //        print_r($Path);
 //        echo '</pre>';
+
+    }
+
+    private function Auth($request,$Path)
+    {
         if(count($Path)==0)
         {
-            throw new Exception('API Method (GET/POST) Request not found');
+            throw new Exception('API Method Auth Request not found');
         }
         if(count($Path)>1)
         {
-            throw new  Exception('API Method (GET/POST) Request is invalid!. Please check your request');
+            throw new  Exception('API Method Auth Request not found');
         }
         if($request->isPost()){
-            require_once Application::$ROOT_DIR.'/API/POST'.$Path[0].'.php';
+            require_once Application::$ROOT_DIR.'/API/Auth'.$Path[0].'.php';
         }
         if($request->isGet()){
-            require_once Application::$ROOT_DIR.'/API/GET'.$Path[0].'.php';
+            require_once Application::$ROOT_DIR.'/API/Auth'.$Path[0].'.php';
         }
     }
 }

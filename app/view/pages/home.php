@@ -24,7 +24,7 @@ Test D {{name}} {{Author}}
                 test.innerHTML = this.response;
             }
         };
-        xhttp.open("GET", "http://localhost:8080/API/GET/CurrentUser", true);
+        xhttp.open("GET", "http://localhost:8080/API/Auth/CurrentUser", true);
         xhttp.send(form);
         xhttp.responseType = 'json';
     }
@@ -42,7 +42,7 @@ Test D {{name}} {{Author}}
                 test.innerHTML = this.response;
             }
         };
-        xhttp.open("POST", "http://localhost:8080/API/POST/SignOut", true);
+        xhttp.open("POST", "http://localhost:8080/API/Auth/SignOut", true);
         xhttp.send(form);
         xhttp.responseType = 'json';
     }
@@ -60,7 +60,7 @@ Test D {{name}} {{Author}}
                 test.innerHTML = this.response;
             }
         };
-        xhttp.open("POST", "http://localhost:8080/API/POST/SignInWithEP", true);
+        xhttp.open("POST", "http://localhost:8080/API/Auth/SignInWithEP", true);
         xhttp.send(form);
         xhttp.responseType = 'json';
     }
